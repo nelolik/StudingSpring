@@ -1,13 +1,47 @@
 package com.nelolik.springcourse;
 
-public class MusicPlayer {
-    private Music music;
+import java.util.List;
 
-    public MusicPlayer(Music music) {
-        this.music = music;
+public class MusicPlayer {
+    private List<Music> musicList;
+    private String name;
+    private int volume;
+
+    public MusicPlayer() {
+    }
+
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
     public void playMusic() {
-        System.out.println("Playing: " + music.getSong());
+        for (Music music :
+                musicList) {
+            System.out.println("Playing: " + music.getSong());
+        }
+    }
+
+    public void setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public List<Music> getMusicList() {
+        return musicList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getVolume() {
+        return volume;
     }
 }
