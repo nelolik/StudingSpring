@@ -1,44 +1,31 @@
 package com.nelolik.springcourse;
 
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class MusicPlayer {
-    private Music music;
-    private String name;
-    private int volume;
+//    @Autowired
+    private ClassicalMusic classicalMusic;
+    private RockMusic rockMusic;
 
     public MusicPlayer() {
     }
 
-    public MusicPlayer(Music music) {
-        this.music = music;
+    @Autowired
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
     }
 
-    public void playMusic() {
-        System.out.println("Playing: " + music.getSong());
+    public String playMusic() {
+        return "Playing: " + classicalMusic.getSong() + " " + "Playing: " + rockMusic.getSong();
     }
 
-    public void setMusic(Music music) {
-        this.music = music;
-    }
+//    @Autowired
+//    public void setMusic(Music music) {
+//        this.music = music;
+//    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public Music getMusic() {
-        return music;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
 }
