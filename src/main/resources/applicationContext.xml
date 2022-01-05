@@ -17,7 +17,8 @@
           class="com.nelolik.springcourse.JazzMusic"/>
 
     <bean id="musicPlayer"
-          class="com.nelolik.springcourse.MusicPlayer">
+          class="com.nelolik.springcourse.MusicPlayer"
+          scope="prototype">
         <property name="musicList">
             <list>
                 <ref bean="rockMusicBean"/>
