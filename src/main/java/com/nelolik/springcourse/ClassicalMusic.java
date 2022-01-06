@@ -2,10 +2,9 @@ package com.nelolik.springcourse;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class ClassicalMusic implements Music{
 
-    private ClassicalMusic() {}
+    ClassicalMusic() {}
 
     public static ClassicalMusic getClassicalMusic() {
         return new ClassicalMusic();
