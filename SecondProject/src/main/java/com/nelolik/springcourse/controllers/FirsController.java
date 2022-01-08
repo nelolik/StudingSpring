@@ -22,6 +22,44 @@ public class FirsController  {
         return "first/hello";
     }
 
+    @GetMapping("/calculator")
+    public String calculator(HttpServletRequest request,
+                             Model model) {
+        String a = request.getParameter("a");
+        String b = request.getParameter("b");
+        String action = request.getParameter("action");
+        String answer = calcResult(a, b, action);
+
+        model.addAttribute("message", "Result is " + answer);
+
+        return "first/hello";
+    }
+
+
+    private String calcResult(String a, String b, String action) {
+        if (a == null || b == null || action == null) {
+            return "missing args";
+        }
+        try {
+            Integer ai = Integer.parseInt(a);
+            Integer bi = Integer.parseInt(b);
+            switch (action) {
+                case "mult":
+                    return "" + (ai * bi);
+                case "div":
+                    return "" + (ai / bi);
+                case "add":
+                    return "" + (ai + bi);
+                case "sub":
+                    return "" + (ai - bi);
+                default:
+                    return "wrong operator";
+            }
+        } catch (NumberFormatException e) {
+            return "arguments are not integers";
+        }
+    }
+
     @GetMapping("/goodbye")
     public String goodByePage() {
         return "first/goodbye";
