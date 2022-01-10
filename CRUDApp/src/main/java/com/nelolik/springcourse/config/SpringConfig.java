@@ -5,6 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -20,7 +22,11 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan("com.nelolik.springcourse")
 @EnableWebMvc
+@PropertySource("classpath:connection.properties")
 public class SpringConfig implements WebMvcConfigurer {
+
+    @Autowired
+    Environment env;
 
     private final ApplicationContext applicationContext;
 
@@ -56,10 +62,10 @@ public class SpringConfig implements WebMvcConfigurer {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/first_db");
-        dataSource.setUsername("nelolik");
-        dataSource.setPassword("lolik");
+        dataSource.setDriverClassName(env.getProperty("connection.driver"));
+        dataSource.setUrl(env.getProperty("connection.URL"));
+        dataSource.setUsername(env.getProperty("connection.username"));
+        dataSource.setPassword(env.getProperty("connection.password"));
         return dataSource;
     }
 
