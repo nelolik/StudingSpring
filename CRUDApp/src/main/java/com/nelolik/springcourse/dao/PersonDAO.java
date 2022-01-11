@@ -1,16 +1,16 @@
 package com.nelolik.springcourse.dao;
 
-import com.nelolik.springcourse.models.Person;
+import com.nelolik.springcourse.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Repository
 public class PersonDAO {
 
     private final JdbcTemplate jdbcTemplate;

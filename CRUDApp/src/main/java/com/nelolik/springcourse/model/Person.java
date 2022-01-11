@@ -1,4 +1,4 @@
-package com.nelolik.springcourse.models;
+package com.nelolik.springcourse.model;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;

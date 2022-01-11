@@ -1,7 +1,7 @@
 package com.nelolik.springcourse.dao;
 
 
-import com.nelolik.springcourse.models.Person;
+import com.nelolik.springcourse.model.Person;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
